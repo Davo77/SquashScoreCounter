@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Score List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<table class="table table-striped">
+		<tr>
+			<th>Scores</th>
+			<th colspan="2"></th>
+		</tr>
+				<tr th:each="addscore : ${score}">
+			<td th:text="${score.title}"></td>
+			<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${game.gameid})}">Delete</a></td>
+			<td><a class="btn btn-primary" th:href="@{/edit/{id}(id=${game.gameid})}">Edit</a></td>
+		</tr>
+
+	</table>  
+	<a href="/add" class="btn btn-success">New Game</a>  
+	
+	<h1>Games</h1>
+    <table>
+
+    	<tr th:each = "gameid : ${score}">
+    		<td th:text="${gameid.player1score} + ' ' + ${gameid.player2score}"></td>
+    		<td th:text="${winner}"></td>
+    		<td th:text="${finalscore}"></td>
+    			
+ 			<td><a th:href="@{/delete/{gameid}(id=${player.gameid})}">Delete</a></td>    		
+    	</tr>
+     </table>
+	
+</body>
+</html>

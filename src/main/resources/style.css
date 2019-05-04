@@ -1,0 +1,40 @@
+body {                	
+	background-color: #194d33;                	
+	color: white;
+        font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+    	font-size: 14px;        	
+}
+            		
+button {            	
+	background-color: #001a0d;               	
+	color: white;                	
+	border-color: #00cc66;                	
+	border-radius: 10px;                	
+}
+
+button:disabled {
+    	background-color: #b3cccc;
+    	color: #f0f5f5;
+    	border-color: #66ffb3;
+    	border-radius: 10px;    
+}
+            		
+select {               	
+	width:150px;               	
+	margin:5px;
+	border-color: black;
+    	border-width: 2px;
+    	border-radius: 5px;
+}
+            		
+input {               	
+	width:200px;                	
+}
+           		
+#submitMatch {               	
+	width:100px;               	
+}
+		    	
+#winner {               	
+	font-weight: bold;                	
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add score</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<h1>Squash Game Score</h1>
+	
+
+	
+	<div>
+		<form th:object="${score}" th:action="@{save}" action="#" method="post">
+		  	<h2 id="h2">Give player names please: </h2>
+		  	<label for="name">Player 1</label>
+			<input type="text" id="player2score" th:field="*{player1score}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="title">Player 2</label>
+			<input type="text" id="player2score" th:field="*{player2score}" />
+			<div style="display: block; height: 10px;"></div>
+		  	
+		  	<div id="players">  </div>
+
+		</form>
+
+	</div>
+
+ <h4>Add new match</h4>
+        Pick two players and enter their points while respecting squash rules -<br>(first to 11 with +2 points difference in case of 
+        10-10 first to +2 points to win a set, first to 3 sets out of 5 to win a match).<br> 
+ <br><br>
+        <form th:object="${score}" th:action="@{save}" action="#" method="post">
+            Player A: 
+            <select id="player1score" class="newMatch">
+                <option value=''>Select ...</option>
+            </select>
+            Player B: 
+            <select id="player2score" class="newMatch">
+                <option value=''>Select ...</option>
+            </select><br>
+            1. Set: 
+            <input type="number" id = "a1s" name="a1" class="newMatch" value="0" th:field="*{player1score}">
+            <input type="number" id = "b1s" name="b1" class="newMatch" value="0" th:field="*{player2score}">
+            <p id="p1k"></p>
+            <p id="p1"></p>
+            2. Set: 
+            <input type="number" id = "a2s" name="a2" class="newMatch" value="0" th:field="*{player1score}">
+            <input type="number" id = "b2s" name="b2" class="newMatch" value="0"th:field="*{player2score}" >
+            <p id="p2k"></p>
+            <p id="p2"></p>
+            3. Set: 
+            <input type="number" id = "a3s" name="a3" class="newMatch" value="0" th:field="*{player1score}">
+            <input type="number" id = "b3s" name="b3" class="newMatch" value="0" th:field="*{player2score}">
+            <p id="p3k"></p>
+            <p id="p3"></p>
+            4. Set: 
+            <input type="number" id = "a4s" name="a4" class="newMatch" value="0" th:field="*{player1score}">
+            <input type="number" id = "b4s" name="b4" class="newMatch" value="0" th:field="*{player2score}">
+            <p id="p4k"></p>
+            <p id="p4"></p>
+            5. Set: 
+            <input type="number" id = "a5s" name="a5" class="newMatch" value="0" th:field="*{player1score}">
+            <input type="number" id = "b5s" name="b5" class="newMatch" value="0" th:field="*{player2score}">
+            <p id="p5k"></p>
+            <p id="p5"></p>
+            <p id="winner"></p>
+            			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+        </form><hr>
+        
+       
+
+        
+</body>
+</html>
