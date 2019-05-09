@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -26,12 +24,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests().antMatchers("/css/**").permitAll() // Enable css when logged out
         .and()
         .authorizeRequests()
-        .antMatchers("/", "add", "save", "scorelist", "delete/{id}").permitAll()
+        .antMatchers("/", "add", "save", "scorelist", "delete/{id}", "welcome").permitAll()
           .anyRequest().authenticated()
           .and()
       .formLogin()
           .loginPage("/login")
-          .defaultSuccessUrl("/scorelist")
+          .defaultSuccessUrl("/welcome")
           .permitAll()
           .and()
       .logout()

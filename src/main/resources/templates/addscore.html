@@ -4,73 +4,108 @@
     <title>Add score</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="resources/style.css" th:href="@{resources/style.css}">
 </head>
 <body>
-	<h1>Squash Game Score</h1>
+	<div class="container" style="text-align: center;">
+	<h1 style="padding-top: 35px;">Squash Game Score</h1>
 	
 
-	
-	<div>
-		<form th:object="${score}" th:action="@{save}" action="#" method="post">
-		  	<h2 id="h2">Give player names please: </h2>
-		  	<label for="name">Player 1</label>
-			<input type="text" id="player2score" th:field="*{player1score}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="title">Player 2</label>
-			<input type="text" id="player2score" th:field="*{player2score}" />
-			<div style="display: block; height: 10px;"></div>
-		  	
-		  	<div id="players">  </div>
-
-		</form>
-
-	</div>
 
  <h4>Add new match</h4>
-        Pick two players and enter their points while respecting squash rules -<br>(first to 11 with +2 points difference in case of 
-        10-10 first to +2 points to win a set, first to 3 sets out of 5 to win a match).<br> 
- <br><br>
+        <p style="text-align: center;">Select two players and enter their points while respecting squash rules -
+        First to score 11 points wins.<br>
+        In case of 10-10 first to score with +2 points difference wins.<br>
+        For official rules refer here : <a href="http://www.worldsquash.org/wp-content/uploads/2018/11/190101_Rules-of-Singles-Squash-2019-V1-1.pdf">Link to official rulebook PDF</a></p>
+        <br>
+        <br>
+       
+
         <form th:object="${score}" th:action="@{save}" action="#" method="post">
-            Player A: 
-            <select id="player1score" class="newMatch">
-                <option value=''>Select ...</option>
+        	<input style="display:none;" type="text" name="gameid" th:field="*{gameid}" th:value="${score.gameid}" required /><br>
+        	<label style="display: inline; padding-bottom: 25px;">
+        	<input  onClick="gamemodeBO3();" type="radio" name="sportstype" id="BO3" value="BO3" checked th:field="*{sportstype}"  />BO3
+        	<input  onClick="gamemodeBO5();" type="radio" name="sportstype" id="BO5" value="BO5" th:field="*{sportstype}" />BO5<br>
+        	</label>
+            <div class="container">
+            Player A:
+            <select id="player1name" class="newMatch" th:field="*{player1name}" style="margin-top: 20px;">
+              <!--  <option value="Select your option" disabled selected>Select your option</option> -->
+                <option th:value="${score.player1name}" th:text="${score.player1name}"></option>
+				<option th:value="${score.player2name}" th:text="${score.player2name}"></option>
             </select>
-            Player B: 
-            <select id="player2score" class="newMatch">
-                <option value=''>Select ...</option>
-            </select><br>
+            Player B:
+            <select id="{player2name}" class="newMatch" th:field="*{player2name}" >
+             
+				<option th:value="${score.player1name}" th:text="${score.player1name}"></option>
+				<option th:value="${score.player2name}" th:text="${score.player2name}"></option>
+			</select>
+            </div>
+            <br>
+           
+           <div id="set1" style="padding-top: 20px;">
             1. Set: 
-            <input type="number" id = "a1s" name="a1" class="newMatch" value="0" th:field="*{player1score}">
-            <input type="number" id = "b1s" name="b1" class="newMatch" value="0" th:field="*{player2score}">
+            <input type="number" id = "a1s" name="a1" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
+            <input type="number" id = "b1s" name="b1" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}">
             <p id="p1k"></p>
             <p id="p1"></p>
-            2. Set: 
-            <input type="number" id = "a2s" name="a2" class="newMatch" value="0" th:field="*{player1score}">
-            <input type="number" id = "b2s" name="b2" class="newMatch" value="0"th:field="*{player2score}" >
+			2. Set: 
+            <input type="number" id = "a2s" name="a2" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
+            <input type="number" id = "b2s" name="b2" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}" >
             <p id="p2k"></p>
             <p id="p2"></p>
             3. Set: 
-            <input type="number" id = "a3s" name="a3" class="newMatch" value="0" th:field="*{player1score}">
-            <input type="number" id = "b3s" name="b3" class="newMatch" value="0" th:field="*{player2score}">
+            <input type="number" id = "a3s" name="a3" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
+            <input type="number" id = "b3s" name="b3" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}">
             <p id="p3k"></p>
             <p id="p3"></p>
+            </div>
+            <div id="set2" style="display:none;">
             4. Set: 
-            <input type="number" id = "a4s" name="a4" class="newMatch" value="0" th:field="*{player1score}">
-            <input type="number" id = "b4s" name="b4" class="newMatch" value="0" th:field="*{player2score}">
+            <input type="number" id = "a4s" name="a4" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
+            <input type="number" id = "b4s" name="b4" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}">
             <p id="p4k"></p>
             <p id="p4"></p>
             5. Set: 
-            <input type="number" id = "a5s" name="a5" class="newMatch" value="0" th:field="*{player1score}">
-            <input type="number" id = "b5s" name="b5" class="newMatch" value="0" th:field="*{player2score}">
+            <input type="number" id = "a5s" name="a5" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
+            <input type="number" id = "b5s" name="b5" class="newMatch" value="0" min="0" max="11"th:field="*{player2score}">
             <p id="p5k"></p>
             <p id="p5"></p>
             <p id="winner"></p>
-            			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save"></input>
-        </form><hr>
-        
-       
-
-        
+            </div>
+            			
+            <!--  <div style="clear: both; display: block; height: 10px;"></div> -->
+            
+			<div style="text-align: center; padding-top: 20px;">
+			<input type="submit" onClick="clickFunction1()" value="Submit Match Scores"></input>
+			</div>
+        </form>
+        </div>
+        <hr>
+        	
+     		<script>
+     		// Script for page direct 
+		function clickFunction1() { 
+			window.location.replace("welcome.html"); 
+			console.log("Toimii");
+			console.log();
+			}
+		//  Script for defining if game is BO3 or BO5 
+    	
+		function gamemodeBO3(){
+			if((document.getElementById('BO3').checked)) {
+				$( "#set2" ).hide();
+			}	
+		}
+			
+		function gamemodeBO5(){
+			if((document.getElementById('BO5').checked)) {
+				$( "#set2" ).show();	
+			}	
+		}
+		document.getElementById("BO3").setAttribute("checked","checked")
+		</script> 
+             
 </body>
 </html>

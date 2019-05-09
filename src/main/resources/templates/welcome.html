@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add score</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<h1>Welcome to Squash Match Score Counter</h1>
+
+
+
+	<div>
+		<!--  <form th:object="${score}" th:action="@{savePlayer}" action="#" method="post"> -->
+			<form th:object="${score}" th:action="@{savePlayer}" action="#" method="post">
+			<h2 id="h2">Give player names please:</h2>
+			<label for="name">Player 1</label> <input type="text"
+				id="player1name" th:field="*{player1name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="title">Player 2</label> <input type="text"
+				id="player2name" th:field="*{player2name}" />
+			<div style="display: block; height: 10px;"></div>
+
+			<div id="players"></div>
+			
+			<input type="submit" onClick="clickFunction()" value="Submit Names"></input>
+		</form>
+		
+
+	</div>
+
+</body>
+</html>
