@@ -1,15 +1,11 @@
 package hh.palvelinohjelmointi.urheilutilasto.web;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import hh.palvelinohjelmointi.urheilutilasto.domain.Score;
 import hh.palvelinohjelmointi.urheilutilasto.domain.ScoreRepository;
 
@@ -27,6 +23,7 @@ public class ScoreController {
 	public String scoreController(Model model) {
 		model.addAttribute("score", scoreRepository.findAll());
 		//model.addAttribute(scores);
+		
 		return "scorelist";
 	}
 	
@@ -70,7 +67,7 @@ public class ScoreController {
 		return "redirect:../scorelist";
 	}
 	
-	// EDIT BOOK
+	// EDIT SCORE
 	@RequestMapping(value = "/edit/{gameid}", method = RequestMethod.GET)
 	public String editBook(@PathVariable("gameid") Long gameId, Model model) {
 		model.addAttribute("score", scoreRepository.findById(gameId));

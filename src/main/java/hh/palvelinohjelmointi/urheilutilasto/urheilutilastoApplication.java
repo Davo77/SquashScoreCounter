@@ -23,8 +23,8 @@ public class urheilutilastoApplication {
 	public CommandLineRunner scoreDemo(ScoreRepository scoreRepository) {
 		return (args) -> {
 			log.info("Save a couple of scores :)");
-			//scoreRepository.save(new Score("BO3", "Sampo K", "Seppo A", "Sampo K", "1", [null, null, null] 6));
-			//scoreRepository.save(new Score("BO3", "Seppo A", "Sampo K", "Seppo A", "1-2", 1-2, 11));
+			//scoreRepository.save(new Score("BO3", "Sampo K", "Seppo A", "Sampo K", "1", "0", "", "", "args"));
+			//scoreRepository.save(new Score("BO3", "Seppo A", "Sampo K", "Seppo A", 12, 23, 11));
 
 			log.info("fetch all scores:");
 			for (Score score : scoreRepository.findAll()) {

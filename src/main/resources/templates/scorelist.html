@@ -26,15 +26,20 @@
 				</ul>
 			</td>
 			<td th:text="${score.finalscore}"></td>
-			<td th:text="${score.winner}"></td>
+			
+			
+ 	<!-- <td th:text="${' score.getWinningScore() : ' + score.winner}"></td> -->	
+			<td th:text="${score.getWinningScore()}"></td> 
+			
 			<td th:text="${score.sportstype}"></td>
 			<td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this score?')" th:href="@{/delete/{id}(id=${score.gameid})}">Delete</a></td>
 			<td><a class="btn btn-primary"  th:href="@{/edit/{id}(id=${score.gameid})}">Edit</a></td>
 		</tr>
 	</table>
 
-<!-- Obsolete Function for pop-up warning box when trying to delete a score -->	
+
 <script>
+<!-- Obsolete Function for pop-up warning box when trying to delete a score -->	
 /*function warningPopup() {
 	var returnValue = confirm("Are you sure you want to delete this score?");
     if (returnValue)
@@ -43,6 +48,13 @@
       return false;
   }
 */
+function test() { 
+	score.winner = score 
+	return score;
+	console.log("Toimii");
+	console.log(score);
+	}
+
 </script>
 	 <a  href="/welcome" class="btn btn-success">New Game</a>
  

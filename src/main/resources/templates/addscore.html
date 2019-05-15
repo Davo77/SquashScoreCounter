@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="resources/style.css" th:href="@{resources/style.css}">
 </head>
 <body>
 	<div class="container" style="text-align: center;">
@@ -18,6 +17,7 @@
         First to score 11 points wins.<br>
         In case of 10-10 first to score with +2 points difference wins.<br>
         For official rules refer here : <a href="http://www.worldsquash.org/wp-content/uploads/2018/11/190101_Rules-of-Singles-Squash-2019-V1-1.pdf">Link to official rulebook PDF</a></p>
+        <p style="color:#FF0000";>Important: Input 0 as score for unplayed matches until a bug can be fixed </p>
         <br>
         <br>
        
@@ -43,11 +43,11 @@
 			</select>
             </div>
             <br>
-           
+        
            <div id="set1" style="padding-top: 20px;">
             1. Set: 
-            <input type="number" id = "a1s" name="a1" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
-            <input type="number" id = "b1s" name="b1" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}">
+            <input type="number" id = "a1s" name="a1" class="newMatch"  value="0" min="0" max="11" th:field="*{player1score}">
+            <input type="number" id = "b1s" name="b1" class="newMatch"  value="0" min="0" max="11" th:field="*{player2score}">
             <p id="p1k"></p>
             <p id="p1"></p>
 			2. Set: 
@@ -61,6 +61,7 @@
             <p id="p3k"></p>
             <p id="p3"></p>
             </div>
+           
             <div id="set2" style="display:none;">
             4. Set: 
             <input type="number" id = "a4s" name="a4" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
@@ -68,13 +69,12 @@
             <p id="p4k"></p>
             <p id="p4"></p>
             5. Set: 
-            <input type="number" id = "a5s" name="a5" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
-            <input type="number" id = "b5s" name="b5" class="newMatch" value="0" min="0" max="11"th:field="*{player2score}">
+            <input type="number" id = "a5s" name="a5" class="newMatch" value="0"  min="0" max="11" th:field="*{player1score}">
+            <input type="number" id = "b5s" name="b5" class="newMatch" value="0"  min="0" max="11" th:field="*{player2score}">
             <p id="p5k"></p>
             <p id="p5"></p>
-            <p id="winner"></p>
             </div>
-            			
+            		
             <!--  <div style="clear: both; display: block; height: 10px;"></div> -->
             
 			<div style="text-align: center; padding-top: 20px;">
@@ -85,13 +85,14 @@
         <hr>
         	
      		<script>
+     		
      		// Script for page direct 
 		function clickFunction1() { 
 			window.location.replace("welcome.html"); 
 			console.log("Toimii");
 			console.log();
 			}
-		//  Script for defining if game is BO3 or BO5 
+		//  Script function for defining if game is BO3 or BO5 
     	
 		function gamemodeBO3(){
 			if((document.getElementById('BO3').checked)) {
@@ -105,6 +106,7 @@
 			}	
 		}
 		document.getElementById("BO3").setAttribute("checked","checked")
+		
 		</script> 
              
 </body>
