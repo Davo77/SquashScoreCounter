@@ -1,11 +1,20 @@
 package hh.palvelinohjelmointi.urheilutilasto.web;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import hh.palvelinohjelmointi.urheilutilasto.domain.Score;
 import hh.palvelinohjelmointi.urheilutilasto.domain.ScoreRepository;
 
@@ -18,7 +27,26 @@ public class ScoreController {
 	private ScoreRepository drepository;
 	
 	//private static List<Score> scores = new ArrayList<Score>();
+/*	
+	@RequestMapping(value = "image/{imageName}")
+	@ResponseBody
+	public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
 
+	    File serverFile = new File("/uploads/" + imageName + ".jpg");
+
+	    return Files.readAllBytes(serverFile.toPath());
+	    
+	}
+*/
+    @Configuration
+    public class ResourceConfig implements WebMvcConfigurer {
+
+        @Override
+        public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+            registry.addResourceHandler("../static/images/**").addResourceLocations("file:images//");
+        }
+    }
+	
 	@RequestMapping(value = "/scorelist", method = RequestMethod.GET)
 	public String scoreController(Model model) {
 		model.addAttribute("score", scoreRepository.findAll());
@@ -45,6 +73,7 @@ public class ScoreController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Score score) {
 		scoreRepository.save(score);
+		
 		
 	//	List<Score> scores = ScoreList.getScores();
 	//	scoreRepository.save(scores);

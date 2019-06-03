@@ -6,18 +6,25 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import hh.palvelinohjelmointi.urheilutilasto.domain.Score;
 import hh.palvelinohjelmointi.urheilutilasto.domain.ScoreRepository;
 
 @SpringBootApplication
-public class urheilutilastoApplication {
+public class urheilutilastoApplication extends SpringBootServletInitializer {
 	private static final Logger log = LoggerFactory.getLogger(urheilutilastoApplication.class);
 
 	public static void main(String[] args) {
 		/* Responsible for launching the boot application. */
 		SpringApplication.run(urheilutilastoApplication.class, args);
 	}
+	
+	 @Override
+	 protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	  return application.sources(urheilutilastoApplication.class);
+	 }
 
 	@Bean
 	public CommandLineRunner scoreDemo(ScoreRepository scoreRepository) {

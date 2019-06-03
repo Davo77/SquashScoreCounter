@@ -17,7 +17,7 @@
         First to score 11 points wins.<br>
         In case of 10-10 first to score with +2 points difference wins.<br>
         For official rules refer here : <a href="http://www.worldsquash.org/wp-content/uploads/2018/11/190101_Rules-of-Singles-Squash-2019-V1-1.pdf">Link to official rulebook PDF</a></p>
-        <p style="color:#FF0000";>Important: Input 0 as score for unplayed matches until a bug can be fixed </p>
+   <!--     <p style="color:#FF0000";>Important: Input 0 as score for unplayed matches until a bug can be fixed </p> -->
         <br>
         <br>
        
@@ -43,34 +43,41 @@
 			</select>
             </div>
             <br>
-        
+          <!--   TESTING
+            <input type="number" class="newMatch"  value="0" min="0" max="11"  name="player1score" id="player1score" >
+            <input type="number" class="newMatch"  value="0" min="0" max="11"  name="player2score" id="player2score" >
+            
+            <input type="number" class="newMatch"  value="0" min="0" max="11"  name="player1score" id="player1score" >
+            <input type="number" class="newMatch"  value="0" min="0" max="11"  name="player2score" id="player2score" >
+            -->
+         
            <div id="set1" style="padding-top: 20px;">
             1. Set: 
-            <input type="number" id = "a1s" name="a1" class="newMatch"  value="0" min="0" max="11" th:field="*{player1score}">
-            <input type="number" id = "b1s" name="b1" class="newMatch"  value="0" min="0" max="11" th:field="*{player2score}">
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player1score" id="player1score" >
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player2score" id="player2score" >
             <p id="p1k"></p>
             <p id="p1"></p>
-			2. Set: 
-            <input type="number" id = "a2s" name="a2" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
-            <input type="number" id = "b2s" name="b2" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}" >
+            2. Set:
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player1score" id="player1score" >
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player2score" id="player2score" >
             <p id="p2k"></p>
             <p id="p2"></p>
             3. Set: 
-            <input type="number" id = "a3s" name="a3" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
-            <input type="number" id = "b3s" name="b3" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}">
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player1score" id="player1score" >
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player2score" id="player2score" >
             <p id="p3k"></p>
             <p id="p3"></p>
             </div>
-           
+          
             <div id="set2" style="display:none;">
             4. Set: 
-            <input type="number" id = "a4s" name="a4" class="newMatch" value="0" min="0" max="11" th:field="*{player1score}">
-            <input type="number" id = "b4s" name="b4" class="newMatch" value="0" min="0" max="11" th:field="*{player2score}">
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player1score" id="player1score" >
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player2score" id="player2score" >
             <p id="p4k"></p>
             <p id="p4"></p>
             5. Set: 
-            <input type="number" id = "a5s" name="a5" class="newMatch" value="0"  min="0" max="11" th:field="*{player1score}">
-            <input type="number" id = "b5s" name="b5" class="newMatch" value="0"  min="0" max="11" th:field="*{player2score}">
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player1score" id="player1score" >
+            <input type="number" class="newMatch"  value="0" min="0" max="25"  name="player2score" id="player2score" >
             <p id="p5k"></p>
             <p id="p5"></p>
             </div>
