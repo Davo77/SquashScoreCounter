@@ -8,11 +8,11 @@
 	<h1>Edit Score</h1>
 	<div>
 		<form th:object="${score}" th:action="@{../save}" action="#" method="post">
-			<input type="hidden" th:field="*{id}" class="form-control"/>
+			<input type="hidden" th:field="*{gameid}" class="form-control"/>
 			<label for="title">Title</label>
-			<input type="text" id="finalscore" th:field="*{finalscore}" />
+			<input type="text" id="player1name" th:field="*{player1name}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="text" id="palyer1name" th:field="*{player1name}" />
+			<input type="text" id="palyer2name" th:field="*{player2name}" />
   	
 			 <select id="category" th:field="*{category}" class="form-control">
        			<option th:each="category: ${categorys}" th:value="${category.categoryid}" th:text="${category.name}"></option>

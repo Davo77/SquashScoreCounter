@@ -6,11 +6,12 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-	<h1>Welcome to Squash Match Score Counter</h1>
+
 
 
 
 	<div>
+	
 		<!--  <form th:object="${score}" th:action="@{savePlayer}" action="#" method="post"> -->
 			<form th:object="${score}" th:action="@{savePlayer}" action="#" method="post">
 			<h2 id="h2">Give player names please:</h2>
@@ -23,9 +24,20 @@
 
 			<div id="players"></div>
 			
+		<!--	<img th:src="@{'/uploads/' + ${myyrsquash}}"/> -->
+			
+			
+			
 			<input type="submit" onClick="clickFunction()" value="Submit Names"></input>
 		</form>
 		
+		<p>
+		<a href="https://www.facebook.com/MyyrSquash/">
+	<img src="../static/images/myyrsquash.jpg" alt="myyrsquash" class="center" th:src="@{images/myyrsquash.jpg}"/>
+	
+	</a>
+	<p>
+	<h1>Welcome to Squash Match Score Counter</h1>
 
 	</div>
 

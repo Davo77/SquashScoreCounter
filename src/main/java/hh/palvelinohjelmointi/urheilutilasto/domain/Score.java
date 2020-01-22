@@ -21,9 +21,12 @@ public class Score {
 	String winner;
 	String player1name;
 	String player2name;
-	String[] player1score; // = {"0"};
+	String[] player1score; // = {"0","0","0","0","0"};
 	String[] player2score; // = {"0","0","0","0","0"};
 	String finalscore;
+	
+	//public static final String[] SET_VALUES1 = new String[] { "0" };
+	//public static final String[] SET_VALUES2 = new String[] { "0" };
 	
 	public Score() {}
 	
