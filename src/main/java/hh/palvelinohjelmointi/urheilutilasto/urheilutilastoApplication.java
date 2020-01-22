@@ -1,5 +1,7 @@
 package hh.palvelinohjelmointi.urheilutilasto;
 
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +27,11 @@ public class urheilutilastoApplication extends SpringBootServletInitializer {
 	 protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 	  return application.sources(urheilutilastoApplication.class);
 	 }
+
+	 @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(urheilutilastoApplication.class);
+   	 }
 
 	@Bean
 	public CommandLineRunner scoreDemo(ScoreRepository scoreRepository) {
