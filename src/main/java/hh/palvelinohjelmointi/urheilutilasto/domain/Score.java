@@ -11,12 +11,13 @@ import javax.persistence.Id;
 
 
 
+
 @Entity
 public class Score {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	//Attributes
-	private long  gameid;
+	Long id;
 	String sportstype;
 	String winner;
 	String player1name;
@@ -24,7 +25,8 @@ public class Score {
 	String[] player1score; // = {"0","0","0","0","0"};
 	String[] player2score; // = {"0","0","0","0","0"};
 	String finalscore;
-	
+
+
 	//public static final String[] SET_VALUES1 = new String[] { "0" };
 	//public static final String[] SET_VALUES2 = new String[] { "0" };
 	
@@ -44,12 +46,12 @@ public class Score {
 			this.player2score = player2score;
 		}
 	//get/set methods
-	public long getGameid() {
-		return gameid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setGameid(long gameid) {
-		this.gameid = gameid;
+	public void setId(Long Id) {
+		this.id = id;
 	}
 
 	public String getSportstype() {
@@ -135,7 +137,7 @@ public class Score {
 	
 	@Override
 	public String toString() {
-		return "Score [gameid=" + gameid + ", sportstype=" + sportstype + ", winner=" + winner + ", player1name="
+		return "Score [id=" + id + ", sportstype=" + sportstype + ", winner=" + winner + ", player1name="
 				+ player1name + ", player2name=" + player2name + ", player1score=" + player1score + ", player2score="
 				+ player2score + ", finalscore=" + finalscore + "]";
 	}
