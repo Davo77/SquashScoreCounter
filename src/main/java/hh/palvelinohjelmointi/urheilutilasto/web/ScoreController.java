@@ -26,8 +26,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import hh.palvelinohjelmointi.urheilutilasto.domain.ResourceNotFoundException;
 import hh.palvelinohjelmointi.urheilutilasto.domain.Score;
 import hh.palvelinohjelmointi.urheilutilasto.domain.ScoreRepository;
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -42,105 +46,19 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 
-@RestController
-@RequestMapping("/api/v1")
+@Controller
 public class ScoreController {
-    @Autowired
-    private ScoreRepository scoreRepository;
-
- //   @Configuration
-    public class ResourceConfig implements WebMvcConfigurer {
-
-        @Override
-        public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("../static/images/**").addResourceLocations("file:images//");
-        }
-
-        @Override
-        public void configurePathMatch(PathMatchConfigurer pmc) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void configureContentNegotiation(ContentNegotiationConfigurer cnc) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void configureAsyncSupport(AsyncSupportConfigurer asc) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void configureDefaultServletHandling(DefaultServletHandlerConfigurer dshc) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void addFormatters(FormatterRegistry fr) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void addInterceptors(InterceptorRegistry ir) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void addCorsMappings(CorsRegistry cr) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void addViewControllers(ViewControllerRegistry vcr) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void configureViewResolvers(ViewResolverRegistry vrr) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void addArgumentResolvers(List<HandlerMethodArgumentResolver> list) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> list) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void configureMessageConverters(List<HttpMessageConverter<?>> list) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void extendMessageConverters(List<HttpMessageConverter<?>> list) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> list) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> list) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public Validator getValidator() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public MessageCodesResolver getMessageCodesResolver() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
+	@Autowired
+	private ScoreRepository scoreRepository;
+	
+	
+	// Login page
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
+	
+    
 	
 	@RequestMapping(value = "/scorelist", method = RequestMethod.GET)
 	public String scoreController(Model model) {

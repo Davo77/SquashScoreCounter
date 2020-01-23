@@ -88,6 +88,12 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 			<scope>test</scope>
 		</dependency>
+                
+                <dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+    <version>3.2.4.RELEASE</version>
+</dependency>
 
 		<dependency>
 
